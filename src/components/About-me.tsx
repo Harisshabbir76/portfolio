@@ -20,19 +20,16 @@ export default function About() {
         </h2>
 
         <div className="flex flex-col md:flex-row items-center gap-12">
-          {/* Avatar section with full image display */}
+          {/* Avatar section */}
           <div className="md:w-1/3 flex justify-center">
             <div className="relative w-64 h-64 md:w-80 md:h-80">
-              {/* Glow effect */}
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 blur-xl opacity-40"></div>
-              
-              {/* Avatar container with object-contain to show full image */}
               <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-blue-400/30 shadow-2xl hover:border-blue-400 transition-all duration-500 hover:scale-105">
                 <Image
                   src={avatarImage}
                   alt="Portrait of Haris Shabbir"
                   fill
-                  className="object-contain" // Changed from object-cover to object-contain
+                  className="object-contain"
                   quality={100}
                   priority
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
@@ -44,11 +41,11 @@ export default function About() {
           {/* Text content */}
           <div className="md:w-2/3 space-y-6">
             <p className="text-lg md:text-xl leading-relaxed text-gray-200">
-              Hello! I'm <span className="font-bold text-blue-300">Haris Shabbir</span>, a passionate and dedicated MERN stack developer who recently embarked on the exciting journey of full-stack web development.
+              Hello! I&apos;m <span className="font-bold text-blue-300">Haris Shabbir</span>, a passionate and dedicated MERN stack developer who recently embarked on the exciting journey of full-stack web development.
             </p>
             
             <p className="text-lg md:text-xl leading-relaxed text-gray-200">
-              As a fresh developer, I bring enthusiasm, modern coding practices, and a strong foundation in <span className="font-bold text-blue-300">MongoDB</span>, <span className="font-bold text-blue-300">Express.js</span>, <span className="font-bold text-blue-300">React</span>, and <span className="font-bold text-blue-300">Node.js</span>. I'm constantly learning and staying updated with the latest technologies and best practices in web development.
+              As a fresh developer, I bring enthusiasm, modern coding practices, and a strong foundation in <span className="font-bold text-blue-300">MongoDB</span>, <span className="font-bold text-blue-300">Express.js</span>, <span className="font-bold text-blue-300">React</span>, and <span className="font-bold text-blue-300">Node.js</span>. I&apos;m constantly learning and staying updated with the latest technologies and best practices in web development.
             </p>
             
             <p className="text-lg md:text-xl leading-relaxed text-gray-200">

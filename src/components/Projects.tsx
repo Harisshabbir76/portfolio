@@ -1,15 +1,13 @@
 // components/Projects.tsx
 import React from 'react';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
-import { FaCut } from 'react-icons/fa'; // Correct import for scissors icon
+import { FaCut } from 'react-icons/fa';
 import { 
   SiNodedotjs, 
   SiMongodb, 
-  SiExpress, 
-  SiSocketdotio, 
+  SiExpress,
   SiChartdotjs,
   SiShopify,
-  SiTrello,
   SiFoodpanda,
   SiIndeed,
   SiThemoviedatabase,
@@ -21,7 +19,11 @@ export default function Projects() {
     {
       title: "E-Commerce Platform",
       description: "Full-stack MERN e-commerce application with payment integration, user authentication, and admin dashboard.",
-      technologies: [<SiNodedotjs />, <SiMongodb />, <SiExpress />],
+      technologies: [
+        <SiNodedotjs key="node-ecom" />,
+        <SiMongodb key="mongo-ecom" />,
+        <SiExpress key="express-ecom" />
+      ],
       demoUrl: "https://mern-e-commerce-brown.vercel.app/",
       codeUrl: "https://github.com/Harisshabbir76/MERN-e-commerce-",
       icon: <SiShopify className="text-5xl text-blue-400 mb-4" />
@@ -29,7 +31,11 @@ export default function Projects() {
     {
       title: "Hair Salon Booking System",
       description: "Online booking platform for hair salons with appointment scheduling, stylist selection, and service management.",
-      technologies: [<SiNodedotjs />, <SiMongodb />, <SiExpress />],
+      technologies: [
+        <SiNodedotjs key="node-hair" />,
+        <SiMongodb key="mongo-hair" />,
+        <SiExpress key="express-hair" />
+      ],
       demoUrl: "https://hair-saloon-six.vercel.app/",
       codeUrl: "https://github.com/Harisshabbir76/hair-saloon",
       icon: <FaCut className="text-5xl text-blue-400 mb-4" />
@@ -37,7 +43,11 @@ export default function Projects() {
     {
       title: "Restaurant Order System",
       description: "Online food ordering platform with menu management, order tracking, and payment processing.",
-      technologies: [<SiExpress />, <SiMongodb />, <SiChartdotjs />],
+      technologies: [
+        <SiExpress key="express-rest" />,
+        <SiMongodb key="mongo-rest" />,
+        <SiChartdotjs key="chart-rest" />
+      ],
       demoUrl: "#",
       codeUrl: "https://github.com/Harisshabbir76/MERN-Restaurant-",
       icon: <SiFoodpanda className="text-5xl text-blue-400 mb-4" />
@@ -45,7 +55,11 @@ export default function Projects() {
     {
       title: "Job Portal",
       description: "Professional job search platform with resume uploads, company profiles, and application tracking.",
-      technologies: [<SiNodedotjs />, <SiMongodb />, <SiExpress />],
+      technologies: [
+        <SiNodedotjs key="node-job" />,
+        <SiMongodb key="mongo-job" />,
+        <SiExpress key="express-job" />
+      ],
       demoUrl: "#",
       codeUrl: "https://github.com/Harisshabbir76/MERN-job-portal",
       icon: <SiIndeed className="text-5xl text-blue-400 mb-4" />
@@ -53,7 +67,11 @@ export default function Projects() {
     {
       title: "Movie Review Platform",
       description: "Community for film enthusiasts to rate, review, and discover movies with personalized recommendations.",
-      technologies: [<SiNodedotjs />, <SiMongodb />, <SiExpress />],
+      technologies: [
+        <SiNodedotjs key="node-movie" />,
+        <SiMongodb key="mongo-movie" />,
+        <SiExpress key="express-movie" />
+      ],
       demoUrl: "#",
       codeUrl: "https://github.com/Harisshabbir76/Movie-Review-Platform-IMDb-like-",
       icon: <SiThemoviedatabase className="text-5xl text-blue-400 mb-4" />
@@ -61,7 +79,11 @@ export default function Projects() {
     {
       title: "Real-time Chat App",
       description: "Instant messaging application with private and group chats, read receipts, and file sharing.",
-      technologies: [<SiNodedotjs />, <SiMongodb />, <SiExpress />],
+      technologies: [
+        <SiNodedotjs key="node-chat" />,
+        <SiMongodb key="mongo-chat" />,
+        <SiExpress key="express-chat" />
+      ],
       demoUrl: "#",
       codeUrl: "https://github.com/Harisshabbir76/Mern-Chat-App",
       icon: <SiMessenger className="text-5xl text-blue-400 mb-4" />
@@ -82,7 +104,7 @@ export default function Projects() {
           Featured Projects
         </h2>
         <p className="text-lg text-center text-gray-300 mb-16 max-w-3xl mx-auto">
-          Here are some of the projects I've worked on to showcase my MERN stack development skills.
+          Here are some of the projects I&apos;ve worked on to showcase my MERN stack development skills.
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -104,7 +126,7 @@ export default function Projects() {
                   <span className="text-sm text-gray-400">Tech:</span>
                   <div className="flex gap-2">
                     {project.technologies.map((tech, i) => (
-                      <span key={i} className="text-lg text-gray-300 hover:text-blue-300 transition-colors">
+                      <span key={`tech-${index}-${i}`} className="text-lg text-gray-300 hover:text-blue-300 transition-colors">
                         {tech}
                       </span>
                     ))}
