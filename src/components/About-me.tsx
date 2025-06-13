@@ -67,8 +67,13 @@ export default function About() {
   );
 }
 
-// Tech Badge Reusable Component
-const TechBadge = ({ icon, label }: { icon: any; label: string }) => (
+// Tech Badge Reusable Component with proper types
+interface TechBadgeProps {
+  icon: React.ReactNode;
+  label: string;
+}
+
+const TechBadge = ({ icon, label }: TechBadgeProps) => (
   <div className="flex items-center gap-2 bg-white/5 px-5 py-3 rounded-full border border-white/20 shadow-md hover:shadow-cyan-400/30 transition">
     {icon}
     <span className="text-white font-medium">{label}</span>

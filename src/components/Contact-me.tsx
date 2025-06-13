@@ -1,4 +1,3 @@
-// components/Contact.tsx
 "use client";
 
 import React, { useState } from 'react';
@@ -62,7 +61,7 @@ export default function Contact() {
           Let&apos;s Build the Future Together 🚀
         </h2>
         <p className="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-          I'm ready to collaborate on innovative projects, cutting-edge technologies and ambitious challenges.
+          I&apos;m ready to collaborate on innovative projects, cutting-edge technologies and ambitious challenges.
         </p>
       </div>
 
@@ -135,8 +134,15 @@ export default function Contact() {
   );
 }
 
-// Contact Info Component
-const ContactInfo = ({ icon, label, value, href }: any) => (
+// Contact Info Component with proper types
+interface ContactInfoProps {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  href?: string;
+}
+
+const ContactInfo = ({ icon, label, value, href }: ContactInfoProps) => (
   <div className="flex items-center gap-4">
     <div className="p-3 bg-cyan-500/10 rounded-full text-cyan-300 text-2xl shadow-md">
       {icon}
@@ -152,8 +158,17 @@ const ContactInfo = ({ icon, label, value, href }: any) => (
   </div>
 );
 
-// Input Field Component
-const InputField = ({ id, name, label, type = 'text', value, onChange }: any) => (
+// Input Field Component with proper types
+interface InputFieldProps {
+  id: string;
+  name: string;
+  label: string;
+  type?: string;
+  value: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+}
+
+const InputField = ({ id, name, label, type = 'text', value, onChange }: InputFieldProps) => (
   <div>
     <label htmlFor={id} className="block text-gray-300 mb-2">{label}</label>
     <input type={type} id={id} name={name} value={value} onChange={onChange}
