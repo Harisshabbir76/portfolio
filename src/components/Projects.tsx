@@ -91,70 +91,62 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-gray-900 text-white relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-500/10 via-gray-900 to-gray-900 z-0"></div>
-      <div className="absolute inset-0 opacity-10 z-0" style={{
-        backgroundImage: 'linear-gradient(to right, #1e40af 1px, transparent 1px), linear-gradient(to bottom, #1e40af 1px, transparent 1px)',
-        backgroundSize: '40px 40px'
-      }}></div>
+    <section id="projects" className="relative py-24 px-6 bg-gradient-to-br from-[#0f0f0f] via-[#141414] to-[#0c0c0c] text-white overflow-hidden font-sans">
+      
+      {/* Animated Background Particles */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,_#00ffff33,_transparent_70%)] animate-pulse-slow"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,_#00ffff11,_transparent_70%)] animate-spin-slow"></div>
+      </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-          Featured Projects
+      <div className="relative z-10 max-w-7xl mx-auto text-center mb-20">
+        <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg">
+          Featured Projects 🚀
         </h2>
-        <p className="text-lg text-center text-gray-300 mb-16 max-w-3xl mx-auto">
-          Here are some of the projects I&apos;ve worked on to showcase my MERN stack development skills.
+        <p className="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
+          Explore my recent MERN stack projects — crafted with clean code, scalable architecture, and modern design principles.
         </p>
+      </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <div 
-              key={index} 
-              className="bg-gray-800/50 rounded-xl overflow-hidden border border-gray-700 hover:border-blue-400 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 flex flex-col"
-            >
-              <div className="p-6 flex flex-col items-center text-center">
-                <div className="mb-4">
-                  {project.icon}
-                </div>
-                <h3 className="text-xl font-bold mb-3 text-blue-300">{project.title}</h3>
-                <p className="text-gray-300 mb-4">{project.description}</p>
-              </div>
-              
-              <div className="p-6 pt-0 mt-auto">
-                <div className="flex items-center justify-center gap-2 mb-6">
-                  <span className="text-sm text-gray-400">Tech:</span>
-                  <div className="flex gap-2">
-                    {project.technologies.map((tech, i) => (
-                      <span key={`tech-${index}-${i}`} className="text-lg text-gray-300 hover:text-blue-300 transition-colors">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative z-10">
+        {projects.map((project, index) => (
+          <div key={index} className="backdrop-blur-md bg-white/5 p-8 rounded-3xl border border-white/20 shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 flex flex-col justify-between">
+            <div className="flex flex-col items-center text-center">
+              <div className="mb-4">{project.icon}</div>
+              <h3 className="text-2xl font-bold mb-4 text-cyan-300">{project.title}</h3>
+              <p className="text-gray-300 mb-6">{project.description}</p>
+            </div>
 
-                <div className="flex gap-3 justify-center">
-                  <a 
-                    href={project.demoUrl} 
-                    className="flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-sm font-medium transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FiExternalLink /> Live Demo
-                  </a>
-                  <a 
-                    href={project.codeUrl} 
-                    className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-sm font-medium transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FiGithub /> View Code
-                  </a>
-                </div>
+            <div className="mb-6">
+              <div className="flex flex-wrap justify-center items-center gap-3">
+                {project.technologies.map((tech, i) => (
+                  <span key={`tech-${index}-${i}`} className="text-2xl text-white hover:text-cyan-300 transition">
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+
+            <div className="flex gap-3 justify-center">
+              <a 
+                href={project.demoUrl} 
+                className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 hover:from-purple-600 hover:to-cyan-500 rounded-lg text-sm font-semibold shadow-lg transition"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiExternalLink /> Live Demo
+              </a>
+              <a 
+                href={project.codeUrl} 
+                className="flex items-center gap-2 px-5 py-3 bg-black/40 border border-white/20 hover:bg-black/60 rounded-lg text-sm font-semibold transition"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FiGithub /> Code
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
     </section>
   );
