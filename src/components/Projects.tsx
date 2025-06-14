@@ -1,5 +1,7 @@
-// components/Projects.tsx
-import React from 'react';
+"use client";
+
+import { motion } from 'framer-motion';
+import { useInView } from 'react-intersection-observer';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import { FaCut } from 'react-icons/fa';
 import { 
@@ -15,6 +17,36 @@ import {
 } from 'react-icons/si';
 
 export default function Projects() {
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+    rootMargin: '-50px 0px'
+  });
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 10
+      }
+    }
+  };
+
   const projects = [
     {
       title: "E-Commerce Platform",
@@ -91,63 +123,161 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="relative py-24 px-6 bg-gradient-to-br from-[#0f0f0f] via-[#141414] to-[#0c0c0c] text-white overflow-hidden font-sans">
-      
+    <section 
+      id="projects" 
+      ref={ref}
+      className="relative py-24 px-6 bg-gradient-to-br from-[#0f0f0f] via-[#141414] to-[#0c0c0c] text-white overflow-hidden font-sans"
+    >
       {/* Animated Background Particles */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,_#00ffff33,_transparent_70%)] animate-pulse-slow"></div>
         <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,_#00ffff11,_transparent_70%)] animate-spin-slow"></div>
+        
+        {/* Floating tech elements */}
+        <motion.div 
+          className="absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-cyan-400/30 opacity-70"
+          animate={inView ? {
+            y: [0, -20, 0],
+            transition: {
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }
+          } : {}}
+        />
+        <motion.div 
+          className="absolute bottom-1/3 right-1/4 w-4 h-4 rounded-full bg-purple-400/30 opacity-70"
+          animate={inView ? {
+            y: [0, -15, 0],
+            transition: {
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 0.5
+            }
+          } : {}}
+        />
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto text-center mb-20">
-        <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg">
-          Featured Projects 🚀
-        </h2>
-        <p className="mt-6 text-lg text-gray-300 max-w-3xl mx-auto">
-          Explore my recent MERN stack projects — crafted with clean code, scalable architecture, and modern design principles.
-        </p>
-      </div>
+      <motion.div
+        className="relative z-10 max-w-7xl mx-auto"
+        initial="hidden"
+        animate={inView ? "visible" : "hidden"}
+        variants={containerVariants}
+      >
+        <motion.div 
+          className="text-center mb-20"
+          variants={itemVariants}
+        >
+          <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg">
+            Featured Projects <motion.span 
+              animate={inView ? { 
+                y: [0, -10, 0],
+                transition: {
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatType: "reverse"
+                }
+              } : {}}
+            >🚀</motion.span>
+          </h2>
+          <motion.p 
+            className="mt-6 text-lg text-gray-300 max-w-3xl mx-auto"
+            variants={itemVariants}
+          >
+            Explore my recent MERN stack projects — crafted with clean code, scalable architecture, and modern design principles.
+          </motion.p>
+        </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative z-10">
-        {projects.map((project, index) => (
-          <div key={index} className="backdrop-blur-md bg-white/5 p-8 rounded-3xl border border-white/20 shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 flex flex-col justify-between">
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-4">{project.icon}</div>
-              <h3 className="text-2xl font-bold mb-4 text-cyan-300">{project.title}</h3>
-              <p className="text-gray-300 mb-6">{project.description}</p>
-            </div>
-
-            <div className="mb-6">
-              <div className="flex flex-wrap justify-center items-center gap-3">
-                {project.technologies.map((tech, i) => (
-                  <span key={`tech-${index}-${i}`} className="text-2xl text-white hover:text-cyan-300 transition">
-                    {tech}
-                  </span>
-                ))}
+        <motion.div 
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative z-10"
+          variants={containerVariants}
+        >
+          {projects.map((project, index) => (
+            <motion.div 
+              key={index}
+              className="backdrop-blur-md bg-white/5 p-8 rounded-3xl border border-white/20 shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 flex flex-col justify-between group"
+              variants={itemVariants}
+              whileHover={{ y: -10 }}
+            >
+              <div className="absolute inset-0 rounded-3xl border border-cyan-400/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
+              
+              <div className="flex flex-col items-center text-center">
+                <motion.div 
+                  className="mb-4"
+                  whileHover={{ scale: 1.1 }}
+                >
+                  {project.icon}
+                </motion.div>
+                <h3 className="text-2xl font-bold mb-4 text-cyan-300">{project.title}</h3>
+                <p className="text-gray-300 mb-6">{project.description}</p>
               </div>
-            </div>
 
-            <div className="flex gap-3 justify-center">
-              <a 
-                href={project.demoUrl} 
-                className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 hover:from-purple-600 hover:to-cyan-500 rounded-lg text-sm font-semibold shadow-lg transition"
-                target="_blank"
-                rel="noopener noreferrer"
+              <div className="mb-6">
+                <motion.div 
+                  className="flex flex-wrap justify-center items-center gap-3"
+                  initial="hidden"
+                  animate={inView ? "visible" : "hidden"}
+                  variants={{
+                    visible: {
+                      transition: {
+                        staggerChildren: 0.05,
+                        delayChildren: 0.2 * index
+                      }
+                    }
+                  }}
+                >
+                  {project.technologies.map((tech, i) => (
+                    <motion.span 
+                      key={`tech-${index}-${i}`}
+                      className="text-2xl text-white hover:text-cyan-300 transition"
+                      variants={{
+                        hidden: { scale: 0, opacity: 0 },
+                        visible: { 
+                          scale: 1, 
+                          opacity: 1,
+                          transition: {
+                            type: "spring",
+                            stiffness: 200
+                          }
+                        }
+                      }}
+                      whileHover={{ y: -3 }}
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
+                </motion.div>
+              </div>
+
+              <motion.div 
+                className="flex gap-3 justify-center"
+                whileHover={{ scale: 1.02 }}
               >
-                <FiExternalLink /> Live Demo
-              </a>
-              <a 
-                href={project.codeUrl} 
-                className="flex items-center gap-2 px-5 py-3 bg-black/40 border border-white/20 hover:bg-black/60 rounded-lg text-sm font-semibold transition"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <FiGithub /> Code
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
+                <a 
+                  href={project.demoUrl} 
+                  className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 hover:from-purple-600 hover:to-cyan-500 rounded-lg text-sm font-semibold shadow-lg transition relative overflow-hidden group"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></span>
+                  <span className="relative z-10 flex items-center gap-2">
+                    <FiExternalLink /> Live Demo
+                  </span>
+                </a>
+                <a 
+                  href={project.codeUrl} 
+                  className="flex items-center gap-2 px-5 py-3 bg-black/40 border border-white/20 hover:bg-black/60 rounded-lg text-sm font-semibold transition"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FiGithub /> Code
+                </a>
+              </motion.div>
+            </motion.div>
+          ))}
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
