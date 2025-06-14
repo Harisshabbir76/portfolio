@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -122,7 +122,7 @@ export default function Skills() {
             className="mt-6 text-lg text-gray-300 max-w-3xl mx-auto"
             variants={itemVariants}
           >
-            Here's my ever-growing stack of tools & technologies I build with.
+            Here&apos;s my ever-growing stack of tools & technologies I build with.
           </motion.p>
         </motion.div>
 

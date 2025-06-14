@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import React from 'react';
 import { SiMongodb, SiExpress, SiReact, SiNodedotjs } from 'react-icons/si';
@@ -30,18 +30,6 @@ export default function About() {
         stiffness: 100,
         damping: 10,
         mass: 0.5
-      }
-    }
-  };
-
-  const badgeVariants = {
-    hidden: { scale: 0, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 150
       }
     }
   };
