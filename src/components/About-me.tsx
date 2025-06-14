@@ -3,13 +3,13 @@
 import React from 'react';
 import { SiMongodb, SiExpress, SiReact, SiNodedotjs } from 'react-icons/si';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import avatarImage from '../images/avatar.png';
 
 export default function About() {
-  // Animation variants
-  const containerVariants = {
+  // Animation variants with proper typing
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -20,7 +20,7 @@ export default function About() {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 50, opacity: 0 },
     visible: {
       y: 0,
@@ -30,7 +30,7 @@ export default function About() {
         stiffness: 100,
         damping: 10,
         mass: 0.5
-      }
+      } as const // Add const assertion
     }
   };
 
@@ -198,7 +198,7 @@ const TechBadge = ({ icon, label }: TechBadgeProps) => (
         transition: {
           type: "spring",
           stiffness: 150
-        }
+        } as const
       }
     }}
     whileHover={{ y: -3, scale: 1.05 }}
