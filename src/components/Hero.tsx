@@ -4,10 +4,11 @@ import React from 'react';
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiGithub, FiLinkedin, FiMail, FiTwitter } from 'react-icons/fi';
+import Image from 'next/image';
 import Link from 'next/link';
+import heroImage from '../images/my.jpg';
 
 export default function Hero() {
-  // Properly typed animation variants
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
@@ -25,7 +26,7 @@ export default function Hero() {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring" as const, // Explicitly typed as const
+        type: "spring" as const,
         stiffness: 100,
         damping: 10
       }
@@ -56,67 +57,94 @@ export default function Hero() {
         animate={inView ? "visible" : "hidden"}
         variants={containerVariants}
       >
-        <motion.div variants={itemVariants}>
-          <motion.p 
-            className="text-lg md:text-xl text-cyan-400 mb-4"
-            initial={{ opacity: 0 }}
-            animate={inView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.2 }}
-          >
-            Hello, I&apos;m
-          </motion.p>
-          
-          <motion.h1 
-            className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg"
-            variants={itemVariants}
-          >
-            Haris Shabbir
-          </motion.h1>
-          
-          <motion.h2 
-            className="text-2xl md:text-3xl font-bold text-gray-300 mt-4 mb-8"
-            variants={itemVariants}
-          >
-            MERN Stack Developer
-          </motion.h2>
-          
-          <motion.p 
-            className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-12"
-            variants={itemVariants}
-          >
-            I build modern, scalable web applications with clean code and exceptional user experiences.
-          </motion.p>
-        </motion.div>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+          <div className="text-center md:text-left md:w-1/2">
+            <motion.div variants={itemVariants}>
+              <motion.p 
+                className="text-lg md:text-xl text-cyan-400 mb-4"
+                initial={{ opacity: 0 }}
+                animate={inView ? { opacity: 1 } : {}}
+                transition={{ delay: 0.2 }}
+              >
+                Hello, I&apos;m
+              </motion.p>
+              
+              <motion.h1 
+                className="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg"
+                variants={itemVariants}
+              >
+                Haris Shabbir
+              </motion.h1>
+              
+              <motion.h2 
+                className="text-2xl md:text-3xl font-bold text-gray-300 mt-4 mb-8"
+                variants={itemVariants}
+              >
+                MERN Stack Developer
+              </motion.h2>
+              
+              <motion.p 
+                className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto md:mx-0 mb-12"
+                variants={itemVariants}
+              >
+                I build modern, scalable web applications with clean code and exceptional user experiences.
+              </motion.p>
+            </motion.div>
 
-        <motion.div 
-          className="flex justify-center gap-6"
-          variants={itemVariants}
-        >
-          <SocialLink href="https://github.com/Harisshabbir76">
-            <FiGithub className="text-2xl" />
-          </SocialLink>
-          <SocialLink href="https://www.linkedin.com/in/haris-shabbir-6600a9282/">
-            <FiLinkedin className="text-2xl" />
-          </SocialLink>
-          <SocialLink href="https://x.com/realharri5?t=-2hgMruFsg8EFZi3jjISKQ&s=09">
-            <FiTwitter className="text-2xl" />
-          </SocialLink>
-          <SocialLink href="mailto:05harisshabbir@gmail.com">
-            <FiMail className="text-2xl" />
-          </SocialLink>
-        </motion.div>
+            <motion.div 
+              className="flex justify-center md:justify-start gap-6 mb-12 md:mb-0"
+              variants={itemVariants}
+            >
+              <SocialLink href="https://github.com/Harisshabbir76">
+                <FiGithub className="text-2xl" />
+              </SocialLink>
+              <SocialLink href="https://www.linkedin.com/in/haris-shabbir-6600a9282/">
+                <FiLinkedin className="text-2xl" />
+              </SocialLink>
+              <SocialLink href="https://x.com/realharri5?t=-2hgMruFsg8EFZi3jjISKQ&s=09">
+                <FiTwitter className="text-2xl" />
+              </SocialLink>
+              <SocialLink href="mailto:05harisshabbir@gmail.com">
+                <FiMail className="text-2xl" />
+              </SocialLink>
+            </motion.div>
 
-        <motion.div 
-          className="mt-16"
-          variants={itemVariants}
-        >
-          <Link 
-            href="#about" 
-            className="px-8 py-4 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 hover:from-purple-600 hover:to-cyan-500 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-cyan-500/30 inline-block"
+            <motion.div 
+              className="mt-8 md:mt-12"
+              variants={itemVariants}
+            >
+              <Link 
+                href="#about" 
+                className="px-8 py-4 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 hover:from-purple-600 hover:to-cyan-500 rounded-lg font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-cyan-500/30 inline-block"
+              >
+                Explore My Work
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Hero Image - Updated with rounded shape and right positioning */}
+          <motion.div 
+            className="w-full md:w-1/2 max-w-xl md:ml-16 lg:ml-24 xl:ml-32"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={inView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ delay: 0.4, type: "spring" }}
           >
-            Explore My Work
-          </Link>
-        </motion.div>
+            <div className="relative aspect-square">
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 blur-xl opacity-30"></div>
+              <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-white/20 shadow-xl">
+                <Image
+                  src={heroImage}
+                  alt="Haris Shabbir - Web Developer"
+                  fill
+                  quality={100}
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </motion.div>
 
       {/* Floating elements */}
