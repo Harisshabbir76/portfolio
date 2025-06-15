@@ -150,7 +150,7 @@ export default function Skills() {
               <div className="w-full bg-white/10 rounded-full h-3 overflow-hidden">
                 <motion.div 
                   className="bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 h-3 rounded-full w-full"
-                  initial={{ scaleX: 0, originX: 0 }}
+                  initial={{ scaleX: 0, transformOrigin: 'left' }}
                   animate={inView ? { scaleX: 1 } : {}}
                   transition={{ delay: 0.1 * index, duration: 1, type: "spring" }}
                 />
