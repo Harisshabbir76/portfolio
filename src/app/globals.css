@@ -1,12 +1,13 @@
-@import "tailwindcss";
+/* Tailwind CSS Imports */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 @import "tw-animate-css";
 
+/* Custom Variant */
 @custom-variant dark (&:is(.dark *));
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-/* Animations */
+/* ============ ANIMATION KEYFRAMES ============ */
 @keyframes slideInLeft {
   from {
     opacity: 0;
@@ -38,6 +39,47 @@
   }
 }
 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { 
+    opacity: 0.8; 
+  }
+  50% { 
+    opacity: 0.3; 
+  }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { 
+    opacity: 0.2; 
+    transform: scale(1); 
+  }
+  50% { 
+    opacity: 0.3; 
+    transform: scale(1.05); 
+  }
+}
+
+@keyframes spin-slow {
+  from { 
+    transform: rotate(0deg); 
+  }
+  to { 
+    transform: rotate(360deg); 
+  }
+}
+
+/* ============ ANIMATION CLASSES ============ */
 .animate-slide-in-left {
   animation: slideInLeft 0.8s ease-out forwards;
 }
@@ -46,10 +88,35 @@
   animation: slideInRight 0.8s ease-out forwards;
 }
 
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
+.animate-float-delay {
+  animation: float 7s ease-in-out infinite 1s;
+}
+
+.animate-float-delay-2 {
+  animation: float 8s ease-in-out infinite 2s;
+}
+
+.animate-pulse {
+  animation: pulse 15s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 6s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 40s linear infinite;
+}
+
+/* ============ UTILITY CLASSES ============ */
 .delay-100 {
   animation-delay: 0.1s;
 }
@@ -58,11 +125,15 @@
   animation-delay: 0.3s;
 }
 
-/* Tech icon tooltips */
-/* Tech icon animations and tooltips */
+/* ============ COMPONENT STYLES ============ */
+/* Tech Icon Tooltips */
 .tech-icon {
   position: relative;
   display: inline-flex;
+}
+
+.tech-icon:hover div {
+  animation: float 1.5s ease-in-out infinite;
 }
 
 .tooltip {
@@ -82,75 +153,7 @@
   z-index: 10;
 }
 
-/* Animation for tech icons */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-5px);
-  }
-}
-
-.tech-icon:hover div {
-  animation: float 1.5s ease-in-out infinite;
-}
-
-/* about me css */
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 1s ease-out forwards;
-}
-
-@theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-}
-
+/* ============ THEME VARIABLES ============ */
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -220,52 +223,24 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+/* ============ BASE STYLES ============ */
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
-
-
-
-@keyframes pulse {
-  0%, 100% { opacity: 0.8; }
-  50% { opacity: 0.3; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
-
-@keyframes float-delay {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-@keyframes float-delay-2 {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
-
-.animate-float {
-  animation: float 6s ease-in-out infinite;
-}
-
-.animate-float-delay {
-  animation: float-delay 7s ease-in-out infinite;
-  animation-delay: 1s;
-}
-
-.animate-float-delay-2 {
-  animation: float-delay-2 8s ease-in-out infinite;
-  animation-delay: 2s;
-}
-
-.animate-pulse-slow {
-  animation: pulse 15s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+/* ============ CUSTOM COMPONENTS ============ */
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 hover:from-purple-600 hover:to-cyan-500 rounded-lg font-semibold text-white transition-all duration-300 shadow-lg hover:shadow-cyan-500/30;
+  }
+  
+  .card {
+    @apply backdrop-blur-md bg-white/5 p-8 rounded-3xl border border-white/20 shadow-lg hover:shadow-cyan-500/40 transition-all duration-300;
+  }
 }
