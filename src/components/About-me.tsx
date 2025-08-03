@@ -105,7 +105,7 @@ export default function About() {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.2 }}
             >
-              Hello! I'm <span className="font-bold text-cyan-400">Haris Shabbir</span> — a passionate MERN Stack Developer committed to building scalable, modern, and production-grade web applications. 💡
+              Hello! I&apos;m <span className="font-bold text-cyan-400">Haris Shabbir</span> — a passionate MERN Stack Developer committed to building scalable, modern, and production-grade web applications. 💡
             </motion.p>
             
             <motion.p 
@@ -123,7 +123,7 @@ export default function About() {
               animate={inView ? { opacity: 1, x: 0 } : {}}
               transition={{ delay: 0.4 }}
             >
-              My journey is driven by curiosity, creativity, and a constant hunger to learn and innovate. 🚀 Let's build something amazing!
+              My journey is driven by curiosity, creativity, and a constant hunger to learn and innovate. 🚀 Let&apos;s build something amazing!
             </motion.p>
 
             <motion.div 
