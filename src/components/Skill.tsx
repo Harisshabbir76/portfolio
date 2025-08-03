@@ -12,8 +12,10 @@ import {
   SiNextdotjs,
   SiGit,
   SiGithub,
-  SiMysql
+  SiMysql,
+  SiDocker
 } from 'react-icons/si';
+import { FaAws } from 'react-icons/fa';
 
 export default function Skills() {
   const [ref, inView] = useInView({
@@ -56,7 +58,9 @@ export default function Skills() {
     { name: "Next.js", icon: <SiNextdotjs className="text-white text-3xl" /> },
     { name: "Git", icon: <SiGit className="text-orange-400 text-3xl" /> },
     { name: "GitHub", icon: <SiGithub className="text-gray-300 text-3xl" /> },
-    { name: "MySQL", icon: <SiMysql className="text-blue-400 text-3xl" /> }
+    { name: "MySQL", icon: <SiMysql className="text-blue-400 text-3xl" /> },
+    { name: "AWS", icon: <FaAws className="text-orange-500 text-3xl" /> },
+    { name: "Docker", icon: <SiDocker className="text-blue-400 text-3xl" /> }
   ];
 
   return (
@@ -127,7 +131,7 @@ export default function Skills() {
         </motion.div>
 
         <motion.div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 relative z-10"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-12 relative z-10"
           variants={containerVariants}
         >
           {skills.map((skill, index) => (

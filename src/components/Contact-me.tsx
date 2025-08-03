@@ -128,7 +128,7 @@ export default function Contact() {
 
             <div className="space-y-8">
               <ContactInfo icon={<FiMail />} label="Email" value="05harisshabbir@gmail.com" href="mailto:05harisshabbir@gmail.com" />
-              <ContactInfo icon={<FiMapPin />} label="Location" value="Available for remote work" />
+              <ContactInfo icon={<FiMapPin />} label="Location" value="Available for work" />
               <ContactInfo icon={<FiClock />} label="Response Time" value="Usually within 24 hours" />
             </div>
 

@@ -2,7 +2,7 @@
 
 import { motion, Variants } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FiExternalLink, FiGithub } from 'react-icons/fi';
+import { FiGithub } from 'react-icons/fi';
 import { FaCut } from 'react-icons/fa';
 import { 
   SiNodedotjs, 
@@ -13,7 +13,7 @@ import {
   SiFoodpanda,
   SiIndeed,
   SiThemoviedatabase,
-  SiMessenger
+  SiOpenai
 } from 'react-icons/si';
 
 export default function Projects() {
@@ -49,6 +49,17 @@ export default function Projects() {
 
   const projects = [
     {
+      title: "AI Weather Forecast",
+      description: "Intelligent weather application using AI to provide hyper-local forecasts and predictive insights.",
+      technologies: [
+        <SiNodedotjs key="node-weather" />,
+        <SiExpress key="express-weather" />,
+        <SiOpenai key="ai-weather" />
+      ],
+      codeUrl: "https://github.com/Harisshabbir76/weather-app",
+      icon: <SiOpenai className="text-5xl text-blue-400 mb-4" />
+    },
+    {
       title: "E-Commerce Platform",
       description: "Full-stack MERN e-commerce application with payment integration, user authentication, and admin dashboard.",
       technologies: [
@@ -56,7 +67,6 @@ export default function Projects() {
         <SiMongodb key="mongo-ecom" />,
         <SiExpress key="express-ecom" />
       ],
-      demoUrl: "https://mern-e-commerce-brown.vercel.app/",
       codeUrl: "https://github.com/Harisshabbir76/MERN-e-commerce-",
       icon: <SiShopify className="text-5xl text-blue-400 mb-4" />
     },
@@ -68,7 +78,6 @@ export default function Projects() {
         <SiMongodb key="mongo-hair" />,
         <SiExpress key="express-hair" />
       ],
-      demoUrl: "https://hair-saloon-six.vercel.app/",
       codeUrl: "https://github.com/Harisshabbir76/hair-saloon",
       icon: <FaCut className="text-5xl text-blue-400 mb-4" />
     },
@@ -80,7 +89,6 @@ export default function Projects() {
         <SiMongodb key="mongo-rest" />,
         <SiChartdotjs key="chart-rest" />
       ],
-      demoUrl: "#",
       codeUrl: "https://github.com/Harisshabbir76/MERN-Restaurant-",
       icon: <SiFoodpanda className="text-5xl text-blue-400 mb-4" />
     },
@@ -92,7 +100,6 @@ export default function Projects() {
         <SiMongodb key="mongo-job" />,
         <SiExpress key="express-job" />
       ],
-      demoUrl: "#",
       codeUrl: "https://github.com/Harisshabbir76/MERN-job-portal",
       icon: <SiIndeed className="text-5xl text-blue-400 mb-4" />
     },
@@ -104,21 +111,8 @@ export default function Projects() {
         <SiMongodb key="mongo-movie" />,
         <SiExpress key="express-movie" />
       ],
-      demoUrl: "#",
       codeUrl: "https://github.com/Harisshabbir76/Movie-Review-Platform-IMDb-like-",
       icon: <SiThemoviedatabase className="text-5xl text-blue-400 mb-4" />
-    },
-    {
-      title: "Real-time Chat App",
-      description: "Instant messaging application with private and group chats, read receipts, and file sharing.",
-      technologies: [
-        <SiNodedotjs key="node-chat" />,
-        <SiMongodb key="mongo-chat" />,
-        <SiExpress key="express-chat" />
-      ],
-      demoUrl: "#",
-      codeUrl: "https://github.com/Harisshabbir76/Mern-Chat-App",
-      icon: <SiMessenger className="text-5xl text-blue-400 mb-4" />
     }
   ];
 
@@ -251,27 +245,19 @@ export default function Projects() {
               </div>
 
               <motion.div 
-                className="flex gap-3 justify-center"
+                className="flex justify-center"
                 whileHover={{ scale: 1.02 }}
               >
                 <a 
-                  href={project.demoUrl} 
+                  href={project.codeUrl} 
                   className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 hover:from-purple-600 hover:to-cyan-500 rounded-lg text-sm font-semibold shadow-lg transition relative overflow-hidden group"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <span className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></span>
                   <span className="relative z-10 flex items-center gap-2">
-                    <FiExternalLink /> Live Demo
+                    <FiGithub /> View Code
                   </span>
-                </a>
-                <a 
-                  href={project.codeUrl} 
-                  className="flex items-center gap-2 px-5 py-3 bg-black/40 border border-white/20 hover:bg-black/60 rounded-lg text-sm font-semibold transition"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FiGithub /> Code
                 </a>
               </motion.div>
             </motion.div>

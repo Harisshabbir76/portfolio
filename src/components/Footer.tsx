@@ -64,7 +64,7 @@ export default function Footer() {
               <div className="p-2 bg-cyan-500/10 rounded-full text-cyan-300">
                 <FiMapPin className="text-xl" />
               </div>
-              <span>Available for remote work</span>
+              <span>Available for work</span>
             </li>
           </ul>
         </div>
