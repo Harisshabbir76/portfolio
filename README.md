@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Haris Shabbir — Portfolio (Terminal Theme)
 
-## Getting Started
+A Next.js 14 (App Router) + TypeScript + Tailwind CSS + Framer Motion portfolio site.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Animated grid background with floating glow orbs (ambient motion, GPU-friendly)
+- Typing-effect terminal animation in the hero
+- Scroll-triggered fade-up reveals on every section (About, Skills, Projects, Contact)
+- Staggered grid animation for the skills list
+- Hover micro-interactions on project cards and buttons
+- "Hire Me" / "Contact Me" / "Chat on WhatsApp" buttons link directly to your WhatsApp number
+- "View My Work" / "See all projects" buttons link to your GitHub profile
+- Respects `prefers-reduced-motion` for accessibility
+- Fully responsive (mobile, tablet, desktop)
+
+## Getting started
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Run the dev server:
+
+   ```bash
+   npm run dev
+   ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Editing your content
+
+Almost everything — your name, bio, projects, skills, education, contact links —
+lives in one file:
+
+```
+src/lib/data.ts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Edit that file and the whole site updates. No need to touch components for
+content changes.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To change colors (the neon green / violet theme), edit:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+tailwind.config.js   -> theme.extend.colors
+```
 
-## Learn More
+## Deploying to Vercel
 
-To learn more about Next.js, take a look at the following resources:
+The easiest way to deploy:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push this folder to a new GitHub repository.
+2. Go to [vercel.com/new](https://vercel.com/new) and import that repository.
+3. Vercel auto-detects Next.js — just click Deploy.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+No environment variables are required for this project.
 
-## Deploy on Vercel
+## Project structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+src/
+  app/
+    layout.tsx       Root layout, fonts, metadata
+    page.tsx          Assembles all sections
+    globals.css        Global styles + animated grid background
+  components/
+    AnimatedBackground.tsx   Floating glow orbs
+    Navbar.tsx
+    Hero.tsx                  Animated terminal + intro
+    About.tsx                 Bio + education timeline
+    Skills.tsx                Tech stack grid
+    Projects.tsx              Project cards (client + personal work)
+    Contact.tsx                WhatsApp CTA
+    Footer.tsx
+  lib/
+    data.ts            All your content in one place
+```

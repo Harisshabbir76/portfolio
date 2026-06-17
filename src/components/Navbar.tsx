@@ -1,75 +1,61 @@
 "use client";
 
-import React, { useState } from 'react';
-import Link from 'next/link';
-import { FiMenu, FiX } from 'react-icons/fi';
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { whatsappLink } from "@/lib/data";
+
+const links = [
+  { href: "#about", label: "about" },
+  { href: "#skills", label: "skills" },
+  { href: "#work", label: "work" },
+  { href: "#contact", label: "contact" },
+];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <nav className="fixed w-full z-50 backdrop-blur-lg bg-white/5 border-b border-white/10 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
-          
-          {/* Logo */}
-          <div className="flex-shrink-0">
-            <Link href="/" className="text-2xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg">
-              Haris Portfolio
-            </Link>
-          </div>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="ml-10 flex items-center space-x-8">
-              {navLinks.map((link, index) => (
-                <Link
-                  key={index}
-                  href={link.href}
-                  className="relative group text-white font-medium text-lg transition"
-                >
-                  {link.label}
-                  <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 transition-all group-hover:w-full duration-300"></span>
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          {/* Mobile menu button */}
-          <div className="md:hidden flex items-center">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-cyan-400 focus:outline-none"
-            >
-              {isOpen ? <FiX className="h-6 w-6" /> : <FiMenu className="h-6 w-6" />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile menu */}
-      <div className={`md:hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
-        <div className="flex flex-col items-center bg-black/80 py-4 space-y-4">
-          {navLinks.map((link, index) => (
-            <Link
-              key={index}
-              href={link.href}
-              className="text-white text-lg font-semibold transition hover:text-cyan-400"
-              onClick={() => setIsOpen(false)}
-            >
-              {link.label}
-            </Link>
+    <motion.nav
+      initial={{ y: -60, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className={`sticky top-0 z-50 px-6 transition-colors duration-300 ${
+        scrolled
+          ? "bg-bg/90 backdrop-blur-md border-b border-neon/10"
+          : "bg-transparent border-b border-transparent"
+      }`}
+    >
+      <div className="max-w-[1140px] mx-auto h-16 flex items-center justify-between">
+        <a href="#" className="font-mono-jb text-[15px] tracking-widest text-neon">
+          &lt;<span className="text-violet">HS</span> /&gt;
+        </a>
+        <ul className="hidden md:flex gap-10 font-mono-jb text-[13px] tracking-wide">
+          {links.map((l) => (
+            <li key={l.href}>
+              <a
+                href={l.href}
+                className="text-ink-muted hover:text-neon transition-colors"
+              >
+                {l.label}
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
+        <a
+          href={whatsappLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hidden md:inline-block font-mono-jb text-[13px] tracking-wide text-neon border border-neon/30 rounded px-5 py-2 hover:bg-neon/5 hover:border-neon transition-colors"
+        >
+          hire-me
+        </a>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
-
-const navLinks = [
-  { label: "Home", href: "#home" },
-  { label: "About Me", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Contact Me", href: "#contact" },
-];

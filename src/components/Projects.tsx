@@ -1,295 +1,106 @@
 "use client";
 
-import { motion, Variants } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FiGithub } from 'react-icons/fi';
-import { FaCut } from 'react-icons/fa';
-import { 
-  SiNodedotjs, 
-  SiMongodb, 
-  SiExpress,
-  SiReact,
-  SiRedux,
-  SiTailwindcss,
-  SiShopify,
-  SiFoodpanda,
-  SiThemoviedatabase,
-  SiOpenai,
-  SiGoogleclassroom
-} from 'react-icons/si';
+import { motion } from "framer-motion";
+import { profile, projects } from "@/lib/data";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0 },
+};
 
 export default function Projects() {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-    rootMargin: '-50px 0px'
-  });
-
-  const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        when: "beforeChildren",
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants: Variants = {
-    hidden: { y: 50, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: {
-        type: "spring",
-        stiffness: 100,
-        damping: 10
-      }
-    }
-  };
-
-  const projects = [
-    {
-      title: "Learning Management System",
-      description: "A comprehensive LMS platform with course management, student progress tracking, quizzes, and interactive learning modules.",
-      technologies: [
-        <SiReact key="react-lms" />,
-        <SiNodedotjs key="node-lms" />,
-        <SiMongodb key="mongo-lms" />,
-        <SiExpress key="express-lms" />,
-        <SiRedux key="redux-lms" />
-      ],
-      codeUrl: "https://github.com/Harisshabbir76/Learning-Management-System-",
-      liveUrl: "https://learning-management-system-lake.vercel.app/",
-      icon: <SiGoogleclassroom className="text-5xl text-blue-400 mb-4" />
-    },
-    {
-      title: "E-Commerce Platform",
-      description: "Full-stack MERN e-commerce application with payment integration, user authentication, and admin dashboard.",
-      technologies: [
-        <SiReact key="react-ecom" />,
-        <SiNodedotjs key="node-ecom" />,
-        <SiMongodb key="mongo-ecom" />,
-        <SiExpress key="express-ecom" />,
-        <SiRedux key="redux-ecom" />
-      ],
-      codeUrl: "https://github.com/Harisshabbir76/MERN-e-commerce-",
-      liveUrl: "https://mern-e-commerce-brown.vercel.app/",
-      icon: <SiShopify className="text-5xl text-blue-400 mb-4" />
-    },
-    {
-      title: "Hair Salon Booking System",
-      description: "Online booking platform for hair salons with appointment scheduling, stylist selection, and service management.",
-      technologies: [
-        <SiReact key="react-hair" />,
-        <SiNodedotjs key="node-hair" />,
-        <SiMongodb key="mongo-hair" />,
-        <SiExpress key="express-hair" />,
-        <SiTailwindcss key="tailwind-hair" />
-      ],
-      codeUrl: "https://github.com/Harisshabbir76/hair-saloon",
-      liveUrl: "https://hair-salon-booking-system.vercel.app/",
-      icon: <FaCut className="text-5xl text-blue-400 mb-4" />
-    },
-    {
-      title: "AI Weather Forecast",
-      description: "Intelligent weather application using AI to provide hyper-local forecasts and predictive insights with beautiful UI.",
-      technologies: [
-        <SiReact key="react-weather" />,
-        <SiTailwindcss key="tailwind-weather" />,
-        <SiOpenai key="ai-weather" />
-      ],
-      codeUrl: "https://github.com/Harisshabbir76/weather-app",
-      liveUrl: "https://weather-app-inky-one-98.vercel.app/",
-      icon: <SiOpenai className="text-5xl text-blue-400 mb-4" />
-    },
-    {
-      title: "Restaurant Order System",
-      description: "Online food ordering platform with menu management, order tracking, payment processing, and real-time updates.",
-      technologies: [
-        <SiReact key="react-rest" />,
-        <SiNodedotjs key="node-rest" />,
-        <SiMongodb key="mongo-rest" />,
-        <SiExpress key="express-rest" />,
-        <SiRedux key="redux-rest" />
-      ],
-      codeUrl: "https://github.com/Harisshabbir76/MERN-Restaurant-",
-      liveUrl: "https://restaurant-order-system.vercel.app/",
-      icon: <SiFoodpanda className="text-5xl text-blue-400 mb-4" />
-    },
-    {
-      title: "Movie Review Platform",
-      description: "Community for film enthusiasts to rate, review, and discover movies with personalized recommendations.",
-      technologies: [
-        <SiReact key="react-movie" />,
-        <SiNodedotjs key="node-movie" />,
-        <SiMongodb key="mongo-movie" />,
-        <SiExpress key="express-movie" />,
-        <SiTailwindcss key="tailwind-movie" />
-      ],
-      codeUrl: "https://github.com/Harisshabbir76/Movie-Review-Platform-IMDb-like-",
-      liveUrl: "https://movie-review-platform.vercel.app/",
-      icon: <SiThemoviedatabase className="text-5xl text-blue-400 mb-4" />
-    }
-  ];
-
   return (
-    <section 
-      id="projects" 
-      ref={ref}
-      className="relative py-24 px-6 bg-gradient-to-br from-[#0f0f0f] via-[#141414] to-[#0c0c0c] text-white overflow-hidden font-sans"
+    <section
+      id="work"
+      className="relative py-24 px-6 bg-surface2 border-t border-white/[0.03]"
     >
-      {/* Animated Background Particles */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,_#00ffff33,_transparent_70%)] animate-pulse-slow"></div>
-        <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle,_#00ffff11,_transparent_70%)] animate-spin-slow"></div>
-        
-        {/* Floating tech elements */}
-        <motion.div 
-          className="absolute top-1/4 left-1/4 w-3 h-3 rounded-full bg-cyan-400/30 opacity-70"
-          animate={inView ? {
-            y: [0, -20, 0],
-            transition: {
-              duration: 6,
-              repeat: Infinity,
-              ease: "easeInOut"
-            }
-          } : {}}
-        />
-        <motion.div 
-          className="absolute bottom-1/3 right-1/4 w-4 h-4 rounded-full bg-purple-400/30 opacity-70"
-          animate={inView ? {
-            y: [0, -15, 0],
-            transition: {
-              duration: 7,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: 0.5
-            }
-          } : {}}
-        />
-      </div>
-
-      <motion.div
-        className="relative z-10 max-w-7xl mx-auto"
-        initial="hidden"
-        animate={inView ? "visible" : "hidden"}
-        variants={containerVariants}
-      >
-        <motion.div 
-          className="text-center mb-20"
-          variants={itemVariants}
+      <div className="relative z-10 max-w-[1140px] mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent drop-shadow-lg">
-            Featured Projects <motion.span 
-              animate={inView ? { 
-                y: [0, -10, 0],
-                transition: {
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: "reverse"
-                }
-              } : {}}
-            >🚀</motion.span>
+          <div className="font-mono-jb text-[11px] text-violet tracking-[0.2em] uppercase mb-2">
+            selected work
+          </div>
+          <h2 className="font-bold text-[28px] sm:text-[40px] tracking-[-0.04em] mb-3">
+            Projects
           </h2>
-          <motion.p 
-            className="mt-6 text-lg text-gray-300 max-w-3xl mx-auto"
-            variants={itemVariants}
-          >
-            Explore my full-stack MERN projects — built with modern technologies, clean architecture, and responsive design principles.
-          </motion.p>
+          <div className="w-12 h-0.5 bg-gradient-to-r from-neon to-violet rounded mb-12" />
         </motion.div>
 
-        <motion.div 
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 relative z-10"
-          variants={containerVariants}
-        >
-          {projects.map((project, index) => (
-            <motion.div 
-              key={index}
-              className="backdrop-blur-md bg-white/5 p-8 rounded-3xl border border-white/20 shadow-lg hover:shadow-cyan-500/40 transition-all duration-300 flex flex-col justify-between group cursor-pointer h-full"
-              variants={itemVariants}
-              whileHover={{ y: -10 }}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((p, i) => (
+            <motion.a
+              key={p.title}
+              href={p.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={fadeUp}
+              transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
+              whileHover={{ y: -5 }}
+              className="group relative bg-surface border border-white/5 rounded-xl p-7 flex flex-col overflow-hidden hover:border-neon/15 transition-colors hover:shadow-[0_20px_60px_rgba(0,0,0,0.3)]"
             >
-              <a 
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute inset-0 z-0"
-                aria-label={`View ${project.title} live project`}
-              />
-              
-              <div className="flex flex-col items-center text-center relative z-10">
-                <motion.div 
-                  className="mb-4"
-                  whileHover={{ scale: 1.1 }}
-                >
-                  {project.icon}
-                </motion.div>
-                <h3 className="text-2xl font-bold mb-4 text-cyan-300">{project.title}</h3>
-                <p className="text-gray-300 mb-6 flex-grow">{project.description}</p>
+              <span className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-neon to-violet scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+
+              <div className="flex justify-between items-start mb-3">
+                <span className="font-mono-jb text-[11px] text-ink-ghost tracking-wide">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <span className="text-[10px] text-violet bg-violet/[0.08] border border-violet/[0.18] px-2.5 py-1 rounded tracking-wide uppercase">
+                  {p.client}
+                </span>
               </div>
 
-              <div className="mb-6 relative z-10">
-                <motion.div 
-                  className="flex flex-wrap justify-center items-center gap-3"
-                  initial="hidden"
-                  animate={inView ? "visible" : "hidden"}
-                  variants={{
-                    visible: {
-                      transition: {
-                        staggerChildren: 0.05,
-                        delayChildren: 0.2 * index
-                      }
-                    }
-                  }}
-                >
-                  {project.technologies.map((tech, i) => (
-                    <motion.span 
-                      key={`tech-${index}-${i}`}
-                      className="text-2xl text-white hover:text-cyan-300 transition"
-                      variants={{
-                        hidden: { scale: 0, opacity: 0 },
-                        visible: { 
-                          scale: 1, 
-                          opacity: 1,
-                          transition: {
-                            type: "spring",
-                            stiffness: 200
-                          }
-                        }
-                      }}
-                      whileHover={{ y: -3 }}
-                    >
-                      {tech}
-                    </motion.span>
-                  ))}
-                </motion.div>
-              </div>
+              <h3 className="text-[19px] font-semibold text-ink mb-2 tracking-[-0.01em]">
+                {p.title}
+              </h3>
+              <p className="text-[14px] text-ink-dim leading-relaxed mb-5 flex-grow">
+                {p.description}
+              </p>
 
-              <motion.div 
-                className="flex justify-center relative z-10"
-                whileHover={{ scale: 1.02 }}
-              >
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    window.open(project.codeUrl, '_blank', 'noopener,noreferrer');
-                  }}
-                  className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-purple-500 via-blue-500 to-cyan-400 hover:from-purple-600 hover:to-cyan-500 rounded-lg text-sm font-semibold shadow-lg transition relative overflow-hidden group"
-                >
-                  <span className="absolute inset-0 bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-500 opacity-0 group-hover:opacity-30 transition-opacity duration-300"></span>
-                  <span className="relative z-10 flex items-center gap-2">
-                    <FiGithub /> View Code
+              <div className="flex gap-2 flex-wrap mb-5">
+                {p.tags.map((t) => (
+                  <span
+                    key={t}
+                    className="text-[11px] text-violet bg-violet/[0.06] border border-violet/[0.15] px-2.5 py-1 rounded tracking-wide"
+                  >
+                    {t}
                   </span>
-                </button>
-              </motion.div>
-            </motion.div>
+                ))}
+              </div>
+
+              <span className="font-mono-jb text-[13px] text-neon border-t border-white/5 pt-4 mt-auto inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+                view project <span aria-hidden="true">→</span>
+              </span>
+            </motion.a>
           ))}
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center mt-14"
+        >
+          <p className="text-ink-dim text-[14px] mb-5">
+            28+ more projects, experiments, and contributions live on GitHub.
+          </p>
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block font-mono-jb text-sm text-neon border border-neon/30 rounded px-7 py-3 hover:bg-neon/5 hover:border-neon transition-colors tracking-wide"
+          >
+            See all projects on GitHub →
+          </a>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }
