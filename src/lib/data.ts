@@ -85,7 +85,7 @@ export const projects: Project[] = [
     description:
       "Complete e-commerce site with a full admin dashboard for a Dubai-based business — product management, responsive UI, and complete online shopping workflows.",
     tags: ["Next.js", "Node.js", "MongoDB"],
-    link: "https://heirloombysk.ae/",
+    link: "https://heirloom-two-lake.vercel.app/",
     featured: true,
   },
   {

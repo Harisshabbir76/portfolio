@@ -17,7 +17,7 @@ const terminalLines = [
   { type: "json", text: '}' },
   { type: "gap" },
   { type: "cmd", text: "ls clients/" },
-  { type: "out", text: "zedify.store/  heirloombysk.ae/  zuhourphilosophy.ae/" },
+  { type: "out", text: "zedify.store/  https://heirloom-two-lake.vercel.app/  zuhourphilosophy.ae/" },
 ];
 
 function useTypedLines(lines: typeof terminalLines, active: boolean) {
