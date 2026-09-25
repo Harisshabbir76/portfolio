@@ -1,2 +1,2 @@
-Put project screenshots here:
-heirloom.jpg, zedify.jpg, zuhour.jpg, altjwal.jpg, meraevents.jpg, arco.jpg
+Project screenshots (WebP, max 1200px wide):
+heirloom.webp, zedify.webp, zuhour.webp, altjwal.webp, meramevents.webp, arco.webp

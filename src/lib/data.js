@@ -37,22 +37,22 @@ export const STACK = [
 ];
 
 export const PROJECTS = [
-  { n: '01', client: true, place: 'Dubai', title: 'Heirloom by SK', image: '/projects/heirloom.png',
+  { n: '01', client: true, place: 'Dubai', title: 'Heirloom by SK', image: '/projects/heirloom.webp',
     desc: 'Complete e-commerce site for a Dubai-based business with a dynamic admin dashboard — product management, CMS control to edit the text and images of every page, responsive UI, and complete online shopping workflows.',
     tech: ['Next.js', 'Node.js', 'MongoDB'], url: 'https://heirloombysk.ae/' },
-  { n: '02', client: true, place: 'Pakistan', title: 'Zedify Store', image: '/projects/zedify.png',
+  { n: '02', client: true, place: 'Pakistan', title: 'Zedify Store', image: '/projects/zedify.webp',
     desc: 'Full-featured online store with secure checkout, Cloudinary-powered image uploads, cart management, product filtering, and a complete admin panel for inventory control.',
     tech: ['React', 'Express', 'MongoDB', 'Cloudinary'], url: 'https://www.zedify.store/' },
-  { n: '03', client: true, place: 'Dubai', title: 'Zuhour Philosophy', image: '/projects/zuhour.png',
+  { n: '03', client: true, place: 'Dubai', title: 'Zuhour Philosophy', image: '/projects/zuhour.webp',
     desc: 'Business portfolio site for a Dubai-based styling and personal shopping brand, built working directly with an Arabic-speaking client. Includes a dynamic admin dashboard where the client can change the text and images of every page.',
     tech: ['React', 'Node.js', 'CMS'], url: 'https://zuhourphilosophy.ae/' },
-  { n: '04', client: true, place: 'UAE', title: 'Al Tjwal', image: '/projects/altjwal.png',
+  { n: '04', client: true, place: 'UAE', title: 'Al Tjwal', image: '/projects/altjwal.webp',
     desc: 'Event management business website with a full admin dashboard — booking management, customer messages, and CMS pages that let the admin change the text and images of every page.',
     tech: ['Next.js', 'Node.js', 'MongoDB', 'CMS'], url: 'http://altjwal.ae/' },
-  { n: '05', client: true, place: 'UAE', title: 'Meram Events', image: '/projects/meramevents.png',
+  { n: '05', client: true, place: 'UAE', title: 'Meram Events', image: '/projects/meramevents.webp',
     desc: 'Event management platform with a complete admin dashboard — booking management, customer messages, and CMS pages so the admin can update the text and images of every page.',
     tech: ['Next.js', 'Node.js', 'MongoDB', 'CMS'], url: 'https://meramevents.ae/' },
-  { n: '06', client: true, place: 'UAE', title: 'Arco Dinnerware', image: '/projects/arco.png',
+  { n: '06', client: true, place: 'UAE', title: 'Arco Dinnerware', image: '/projects/arco.webp',
     desc: 'E-commerce store for a dinnerware brand with a dynamic admin dashboard — product management, order management, customer messages, and editable page content.',
     tech: ['Next.js', 'Node.js', 'MongoDB'], url: 'https://arcodinnerware.com/' },
 ];
