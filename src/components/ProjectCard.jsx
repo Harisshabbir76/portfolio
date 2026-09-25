@@ -11,6 +11,7 @@ export default function ProjectCard({ p }) {
         <div className="thumb">
           <div className="thumb-inner">
             {imgOk && p.image
+              // eslint-disable-next-line @next/next/no-img-element
               ? <img src={p.image} alt={`${p.title} screenshot`} loading="lazy" onError={() => setImgOk(false)} />
               : <small>screenshot — {p.title.toLowerCase()}</small>}
           </div>

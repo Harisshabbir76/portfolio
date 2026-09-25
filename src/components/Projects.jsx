@@ -6,7 +6,7 @@ export default function Projects() {
   return (
     <section id="work" className="section alt" data-screen-label="Projects">
       <div className="container">
-        <Reveal className="eyebrow">// selected work</Reveal>
+        <Reveal className="eyebrow">{'// selected work'}</Reveal>
         <Reveal as="h2" delay={80} className="h2">Projects</Reveal>
         <div className="proj-grid">
           {PROJECTS.map((p, i) => (

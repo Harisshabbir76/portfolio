@@ -7,7 +7,7 @@ export default function Contact() {
     <section id="contact" className="contact" data-screen-label="Contact" style={{ borderTop: '1px solid var(--line)' }}>
       <div className="glow" aria-hidden="true" />
       <div className="container inner">
-        <Reveal className="eyebrow">// get in touch</Reveal>
+        <Reveal className="eyebrow">{'// get in touch'}</Reveal>
         <Reveal as="h2" delay={80}>Let&apos;s Build Something.</Reveal>
         <Reveal as="p" delay={160} className="sub">
           Open to full-time roles, freelance projects, and startup opportunities. Currently based in Karachi, Pakistan.

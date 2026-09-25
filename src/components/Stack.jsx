@@ -6,7 +6,7 @@ export default function Stack() {
   return (
     <section id="skills" className="section" data-screen-label="Tech Stack">
       <div className="container">
-        <Reveal className="eyebrow">// expertise</Reveal>
+        <Reveal className="eyebrow">{'// expertise'}</Reveal>
         <Reveal as="h2" delay={80} className="h2">Tech Stack</Reveal>
         <div className="stack-grid">
           {STACK.map((g, gi) => (

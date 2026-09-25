@@ -5,7 +5,7 @@ export default function About() {
   return (
     <section id="about" className="section alt" data-screen-label="About">
       <div className="container">
-        <Reveal className="eyebrow">// about me</Reveal>
+        <Reveal className="eyebrow">{'// about me'}</Reveal>
         <Reveal as="h2" delay={80} className="h2">Background</Reveal>
         <div className="about-grid">
           <div className="about-text">
@@ -24,7 +24,7 @@ export default function About() {
               Render, Railway, Hostinger, AWS, and VPS environments.
             </Reveal>
             <Reveal as="p" delay={160} style={{ color: 'var(--ink)' }}>
-              I've delivered live projects for clients in Pakistan and the UAE, helping businesses 
+              I&apos;ve delivered live projects for clients in Pakistan and the UAE, helping businesses 
               streamline operations and strengthen their online presence through reliable, 
               user-focused software. My goal is to build high-quality digital products that 
               solve real business problems while continuously expanding my expertise in modern 
